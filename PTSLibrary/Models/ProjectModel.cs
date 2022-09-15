@@ -16,7 +16,7 @@ namespace PTSLibrary.Models
         /// <summary>
         /// Represents the project code
         /// </summary>
-        public string? ProjectCode { get; set; }
+        public string ProjectCode { get; set; } = String.Empty;
 
         /// <summary>
         /// Represents the Project Name
@@ -47,5 +47,20 @@ namespace PTSLibrary.Models
         /// Represents the project video link
         /// </summary>
         public string Link { get; set; } = string.Empty;
+
+        public ProjectModel()
+        {
+
+        }
+
+        public ProjectModel(string projectName, string projectDescription, string level, int projectDuration, string github, string link)
+        {
+            ProjectName = projectName;
+            ProjectDescription = projectDescription;
+            Level = level;
+            ProjectDuration = projectDuration;
+            Github = github;
+            Link = link;
+        }
     }
 }
