@@ -8,7 +8,7 @@ internal class Program
     private static void Main(string[] args)
     {
         //Initialize DB connection
-        PTSLibrary.GlobalConfig.InitializeConnections(true);
+        PTSLibrary.GlobalConfig.InitializeConnections();
         Console.WriteLine("Let's test the db connection - Add Project");
 
         Console.Write("\nEnter Project Name: ");
@@ -28,12 +28,10 @@ internal class Program
         string link = "";
 
         ProjectModel model = new(ProjectName,ProjectDescription,Level,Duration,github,link);
-        Console.WriteLine(model.ProjectID);
 
-        foreach (IDataConnection db in GlobalConfig.Connections)
-        {
-            db.CreateProject(model);
-        }
+        GlobalConfig.connection.CreateProject(model);
+
+        Console.WriteLine("DB Insert was successful!");
 
         Console.Read();
     }
