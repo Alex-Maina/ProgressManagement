@@ -10,16 +10,13 @@ namespace PTSLibrary
 {
     public static class GlobalConfig
     {
-        public static List<IDataConnection> Connections { get; set; } = new List<IDataConnection>();
+        public static IDataConnection connection { get; private set; }
 
-        public static void InitializeConnections(bool database)
+        public static void InitializeConnections()
         {
-            if (database)
-            {
                 //TODO - Create SQL connection
                 SqlConnector sql = new SqlConnector();
-                Connections.Add(sql);
-            }
+                connection = sql;
         }
 
         public static string ConString(string name)
