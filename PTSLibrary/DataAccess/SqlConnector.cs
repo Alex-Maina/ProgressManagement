@@ -19,11 +19,12 @@ namespace PTSLibrary.DataAccess
                 var param = new DynamicParameters();
 
                 param.Add("@ProjectName", model.ProjectName);
+                param.Add("@Duration", model.ProjectDuration);
                 param.Add("@ProjectDescription", model.ProjectDescription);
-                param.Add("@ProjectDuration", model.ProjectDuration);
-                param.Add("ProjectVideoLink", model.Link);
-                param.Add("@ProjectGithubRepo", model.Github);
-                param.Add("@ProjectLevel", model.Level);
+                param.Add("@ProjectTasks", model.ProjectTasks);
+                param.Add("VideoLink", model.Link);
+                param.Add("@GithubRepo", model.Github);
+                param.Add("@Level", model.Level);
                 param.Add("@ProjectID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                 param.Add("@ProjectCode", 0, dbType: DbType.String, direction: ParameterDirection.Output);
 
