@@ -17,6 +17,9 @@ internal class Program
         Console.Write("\nEnter Project Description: ");
         string ProjectDescription = Console.ReadLine();
 
+        Console.Write("\nEnter Project Tasks: ");
+        string ProjectTasks= Console.ReadLine();
+
         Console.Write("\nEnter Project Level: ");
         string Level = Console.ReadLine();
 
@@ -27,7 +30,7 @@ internal class Program
         string github = "";
         string link = "";
 
-        ProjectModel model = new(ProjectName,ProjectDescription,Level,Duration,github,link);
+        ProjectModel model = new(ProjectName,ProjectDescription, ProjectTasks, Level, Duration,github,link);
 
         GlobalConfig.connection.CreateProject(model);
 
