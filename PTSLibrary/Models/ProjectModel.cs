@@ -29,6 +29,11 @@ namespace PTSLibrary.Models
         public string ProjectDescription { get; set; } = string.Empty;
 
         /// <summary>
+        /// Represents the Project Tasks
+        /// </summary>
+        public string ProjectTasks { get; set; }
+
+        /// <summary>
         /// Represents the project difficulty level (Beginner, Intermidiate, Expert)
         /// </summary>
         public string Level { get; set; } = string.Empty;
@@ -53,10 +58,11 @@ namespace PTSLibrary.Models
 
         }
 
-        public ProjectModel(string projectName, string projectDescription, string level, int projectDuration, string github, string link)
+        public ProjectModel(string projectName, string projectDescription, string projectTasks, string level, int projectDuration, string github, string link)
         {
             ProjectName = projectName;
             ProjectDescription = projectDescription;
+            ProjectTasks = projectTasks;
             Level = level;
             ProjectDuration = projectDuration;
             Github = github;
