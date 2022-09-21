@@ -34,9 +34,9 @@ namespace PTSLibrary.Models
         public string Email { get; set; } = string.Empty;
 
         /// <summary>
-        /// Represents admin physical address
+        /// Represents admin password
         /// </summary>
-        public string Address { get; set; } = string.Empty;
+        public string Passwoerd { get; set; } = string.Empty;
 
         /// <summary>
         /// Represents user bio
