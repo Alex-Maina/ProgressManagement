@@ -1,5 +1,5 @@
 # PTS
-Project Tracking System (PTS) will be a distributed system that can support heterogeneous clients. The system will enable easier management of projects done by Software Engineer Professional Accelerator (SEPA) students at Jenga School. 
+Project Tracking System (PTS) is a distributed system that can support heterogeneous clients. The system will enable easier management of projects done by Software Engineering Professional Accelerator (SEPA) students at Jenga School. 
 
 The main languages and frameworks that will be used to develop the core of the project will be C# and .NET.
 
