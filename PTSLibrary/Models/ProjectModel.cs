@@ -68,5 +68,11 @@ namespace PTSLibrary.Models
             Github = github;
             Link = link;
         }
+
+        public ProjectModel(string projectCode, string projectName)
+        {
+            ProjectCode = projectCode;
+            ProjectName = projectName;
+            }
     }
 }
