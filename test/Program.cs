@@ -32,7 +32,7 @@ internal class Program
 
         ProjectModel model = new(ProjectName,ProjectDescription, ProjectTasks, Level, Duration,github,link);
 
-        GlobalConfig.connection.CreateProject(model);
+        GlobalConfig.connection.Create_Project(model);
 
         Console.WriteLine("DB Insert was successful!");
 

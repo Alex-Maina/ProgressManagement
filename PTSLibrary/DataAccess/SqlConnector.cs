@@ -11,7 +11,7 @@ namespace PTSLibrary.DataAccess
 {
     public class SqlConnector : IDataConnection
     {
-        public ProjectModel CreateProject(ProjectModel model)
+        public ProjectModel Create_Project(ProjectModel model)
         {
             //creates a connection to the sql db and destroys the connection upon exit - prevents memory leaks 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString("PTS_db")))

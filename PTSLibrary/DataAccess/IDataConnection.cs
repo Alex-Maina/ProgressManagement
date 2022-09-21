@@ -9,6 +9,6 @@ namespace PTSLibrary.DataAccess
 {
     public interface IDataConnection
     {
-        ProjectModel CreateProject(ProjectModel model);
+        ProjectModel Create_Project(ProjectModel model);
     }
 }
