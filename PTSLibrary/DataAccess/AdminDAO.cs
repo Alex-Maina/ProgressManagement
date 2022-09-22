@@ -232,7 +232,7 @@ namespace PTSLibrary.DataAccess
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             SqlCommand cmd;
             sql = "INSERT INTO Users (FirstName, LastName, Email, Pwd, Role)";
-            sql += String.Format("VALUES ('{0}','{1}','{2}',teamleader", firstname,lastname, email,tempPwd);
+            sql += String.Format("VALUES ('{0}','{1}','{2}',teamleader)", firstname,lastname, email,tempPwd);
             cmd = new SqlCommand(sql, con);
             try
             {
@@ -250,7 +250,28 @@ namespace PTSLibrary.DataAccess
         }
 
         //Assign Project
-
+        public void AsssignProject(DateOnly startdate, int projectID, int cohortID, int teamleaderID, int adminID)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            sql = "INSERT INTO AssignedProjects (StartDate, ProjectID, CohortID, UserID, AdminID)";
+            sql += String.Format("VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')", startdate, projectID, cohortID, teamleaderID, adminID);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error Assigning Project", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
 
     }
