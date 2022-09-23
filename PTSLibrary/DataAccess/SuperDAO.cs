@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PTSLibrary.DataAccess
 {
-    internal class SuperDAO
+    public class SuperDAO
     {
 
         protected UserModel GetUser(int ID)
