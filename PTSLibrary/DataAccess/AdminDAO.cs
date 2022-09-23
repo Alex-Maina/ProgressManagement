@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -57,6 +58,30 @@ namespace PTSLibrary.DataAccess
             catch (SqlException ex)
             {
                 throw new Exception("Error adding new project", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        //Create Cohort
+        public void CreateCohort(DateTime startDate)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            sql = "INSERT INTO Cohorts (StartDate)";
+            sql += String.Format("VALUES ('{0}')", startDate);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error creating new cohort", ex);
             }
             finally
             {
@@ -250,7 +275,7 @@ namespace PTSLibrary.DataAccess
         }
 
         //Assign Project
-        public void AsssignProject(DateOnly startdate, int projectID, int cohortID, int teamleaderID, int adminID)
+        public void AsssignProject(DateTime startdate, int projectID, int cohortID, int teamleaderID, int adminID)
         {
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
