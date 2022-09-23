@@ -44,7 +44,7 @@ namespace PTSLibrary.DataAccess
         }
 
         //List the tasks
-        public List<TaskModel> GetListOfTasks(int ProjectID)
+        public List<TaskModel> GetListOfTasks(int ID)
         {
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
@@ -52,7 +52,7 @@ namespace PTSLibrary.DataAccess
             SqlDataReader dr;
             List<TaskModel> tasks;
             tasks = new List<TaskModel>();
-            sql = "SELECT * FROM Tasks WHERE ProjectID = '" + ProjectID + "'";
+            sql = "SELECT * FROM Tasks WHERE ProjectID = '" + ID + "'";
             cmd = new SqlCommand(sql, con);
 
             try
