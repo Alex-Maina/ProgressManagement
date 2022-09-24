@@ -9,24 +9,20 @@ namespace PTSLibrary.Facades
 {
     internal class UserFacade : SuperFacade
     {
-        private new DataAccess.UserDAO dao;
+        private new DataAccess.StudentDAO dao;
 
-        public UserFacade() : base(new DataAccess.UserDAO())
+        public UserFacade() : base(new DataAccess.StudentDAO())
         {
-            dao = (DataAccess.UserDAO)base.dao;
+            dao = (DataAccess.StudentDAO)base.dao;
         }
-        public UserModel Authenticate(string email, string password)
+
+        public int Authenticate(string email, string password)
         {
             if (email == null || password == null)
             {
                 throw new Exception("Missing Data");
             }
             return dao.Authenticate(email, password);
-        }
-
-        public ProjectModel[] GetListOfProjects(int teamId)
-        {
-            return (dao.GetListOfProjects(teamId).ToArray());
         }
     }
 }
