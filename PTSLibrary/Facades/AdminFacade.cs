@@ -41,14 +41,17 @@ namespace PTSLibrary.Facades
         {
             return (dao.GetListOfUsers()).ToArray();
         }
+        //Project list
         public ProjectModel[] GetListOfProjects()
         {
             return (dao.GetListOfProjects()).ToArray();
         }
+        //Cohort list
         public CohortModel[] GetListOfCohorts()
         {
             return (dao.GetListOfCohorts()).ToArray();
         }
+        //Create task
         public void CreateTask(string task, int projectID)
         {
             if (task == null || task == "" )
@@ -57,6 +60,7 @@ namespace PTSLibrary.Facades
             }
             dao.CreateTask(task, projectID);
         }
+        //Create Teamleader
         public void CreateTeamleader(string firstname, string lastname, string email, string tempPwd)
         {
             if (firstname == null || firstname == "" || lastname == null || email == null || tempPwd == null)
@@ -65,6 +69,7 @@ namespace PTSLibrary.Facades
             }
             dao.CreateTeamleader(firstname,lastname,email,tempPwd);
         }
+        //AssignProject
         public void AssignProject(DateTime startdate, int projectID, int cohortID, int teamleaderID, int adminID)
         {
             if (startdate == null || projectID == null || cohortID == null || teamleaderID == null)

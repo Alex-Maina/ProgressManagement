@@ -94,7 +94,6 @@ namespace PTSLibrary.DataAccess
         {
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
-            SqlConnection cn;
             SqlCommand cmd;
             SqlDataReader dr;
             List<UserModel> users;
@@ -154,40 +153,6 @@ namespace PTSLibrary.DataAccess
                 con.Close();
             }
             return users;
-        }
-
-
-        //List of the projects
-        public List<ProjectModel> GetListOfProjects()
-        {
-            string sql;
-            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
-            SqlCommand cmd;
-            SqlDataReader dr;
-            List<ProjectModel> projects;
-            projects = new List<ProjectModel>();
-            sql = "SELECT * FROM project"; 
-            cmd = new SqlCommand(sql, con);
-            try
-            {
-                con.Open();
-                dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    ProjectModel p = new(dr["ProjectCode"].ToString(),dr["ProjectName"].ToString());
-                    projects.Add(p);
-                }
-                dr.Close();
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception("Error Getting list", ex);
-            }
-            finally
-            {
-                con.Close();
-            }
-            return projects;
         }
 
         //List of cohorts
