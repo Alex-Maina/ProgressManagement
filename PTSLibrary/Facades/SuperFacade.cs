@@ -16,9 +16,14 @@ namespace PTSLibrary.Facades
             this.dao = dao;
         }
 
-        public TaskModel[] GetListOfTasks(int ID)
+        public ProjectModel[] GetListOfProjects()
         {
-            return (dao.GetListOfTasks(ID).ToArray());
+            return (dao.GetListOfProjects().ToArray());
+        }
+
+        public TaskModel[] GetListOfTasks(int projectID)
+        {
+            return (dao.GetListOfTasks(projectID).ToArray());
         }
     }
 }
