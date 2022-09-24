@@ -10,6 +10,7 @@ namespace PTSLibrary.Facades
     public class AdminFacade : SuperFacade
     {
         private new DataAccess.AdminDAO dao;
+
         public AdminFacade() : base(new DataAccess.AdminDAO())
         {
             dao = (DataAccess.AdminDAO)base.dao;
