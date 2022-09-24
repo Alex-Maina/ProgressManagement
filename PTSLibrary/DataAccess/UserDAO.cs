@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PTSLibrary.Models;
 
 namespace PTSLibrary.DataAccess
 {
@@ -27,7 +28,7 @@ namespace PTSLibrary.DataAccess
                 dr = cmd.ExecuteReader(CommandBehavior.SingleRow);
                 if (dr.Read())
                 {
-                    id = (int)dr["UserID"];
+                    id = (int)dr["ID"];
                 }
                 dr.Close();
             }
@@ -42,27 +43,25 @@ namespace PTSLibrary.DataAccess
             return id;
         }
 
-      
-
-        public List<customer> GetListOfCustomers()
+        //List of the projects
+        public List<ProjectModel> GetListOfProjects()
         {
             string sql;
-            SqlConnection cn;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             SqlCommand cmd;
             SqlDataReader dr;
-            List<customer> customers;
-            customers = new List<customer>();
-            sql = "SELECT * FROM customer";
-            cn = new SqlConnection(Properties.Settings.Default.PTSProject2ConnectionString);
-            cmd = new SqlCommand(sql, cn);
+            List<ProjectModel> projects;
+            projects = new List<ProjectModel>();
+            sql = "SELECT * FROM project";
+            cmd = new SqlCommand(sql, con);
             try
             {
-                cn.Open();
+                con.Open();
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    customer c = new customer(dr["CustomerName"].ToString(), (int)dr["CustomerID"]);
-                    customers.Add(c);
+                    ProjectModel p = new(dr["ProjectCode"].ToString(), dr["ProjectName"].ToString());
+                    projects.Add(p);
                 }
                 dr.Close();
             }
@@ -72,10 +71,44 @@ namespace PTSLibrary.DataAccess
             }
             finally
             {
-                cn.Close();
+                con.Close();
             }
-            return customers;
+            return projects;
         }
+
+        //List of cohort members
+        public List<UserModel> GetListOfCohortMembers(int cohortID)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            SqlDataReader dr;
+            List<UserModel> members;
+            members = new List<UserModel>();
+            sql = String.Format("SELECT * FROM Users WHERE CohortID = '{0}'", cohortID);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    UserModel c = new(dr["FirstName"].ToString(), dr["LastName"].ToString(), (int)dr["ID"]);
+                    members.Add(c);
+            }
+                dr.Close();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error Getting list of users", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return members;
+        }
+
         public List<project> GetListOfProjects()// int adminId
         {
             string sql;
