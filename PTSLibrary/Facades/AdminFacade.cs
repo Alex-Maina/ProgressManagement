@@ -15,13 +15,13 @@ namespace PTSLibrary.Facades
         {
             dao = (DataAccess.AdminDAO)base.dao;
         }
-        public int Authenticate(string username, string password)
+        public int Authenticate(string email, string password)
         {
-            if (username == "" || username == "" || password == "")
+            if (email == "" || email == "" || password == "")
             {
                 throw new Exception("Missing Data");
             }
-            return dao.Authenticate(username, password);
+            return dao.Authenticate(email, password);
         }
         public void CreateProject(string projectName, string projectDescription, string projectTasks, string level, int projectDuration, string github, string link)
         {
