@@ -38,11 +38,22 @@ namespace PTSLibrary.Models
         /// </summary>
         public List<UserModel> Members { get; set; } = new List<UserModel>();
 
+        public CohortModel()
+        {
+        }
+
         public CohortModel(string cohortName, string status)
         {
             CohortName = cohortName;
             Status = status;
         }
 
+        public CohortModel(int cohortID, string cohortName, string startDate, string status)
+        {
+            CohortID = cohortID;
+            CohortName = cohortName;
+            StartDate = startDate;
+            Status = status;
+        }
     }
 }
