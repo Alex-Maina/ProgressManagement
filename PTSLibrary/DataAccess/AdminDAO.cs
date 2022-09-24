@@ -128,7 +128,6 @@ namespace PTSLibrary.DataAccess
         {
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
-            SqlConnection cn;
             SqlCommand cmd;
             SqlDataReader dr;
             List<UserModel> users;
