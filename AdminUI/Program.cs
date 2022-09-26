@@ -13,7 +13,7 @@ namespace AdminUI
             ApplicationConfiguration.Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var main = new LoginForm();
+            var main = new HomeForm();
             main.FormClosed += new FormClosedEventHandler(FormClosed);
             main.Show();
             Application.Run();
