@@ -15,11 +15,12 @@ namespace PTSLibrary.Facades
         {
             dao = (DataAccess.AdminDAO)base.dao;
         }
+        //Authenticate
         public int Authenticate(string email, string password)
         {
             if (email == "" || email == "" || password == "")
             {
-                throw new Exception("Missing Data");
+                throw new Exception("All fields must be filled");
             }
             return dao.Authenticate(email, password);
         }

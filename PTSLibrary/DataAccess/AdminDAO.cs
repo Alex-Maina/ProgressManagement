@@ -12,13 +12,14 @@ namespace PTSLibrary.DataAccess
 {
     internal class AdminDAO : SuperDAO
     {
+        int id = 0;
+
         //Authenticate Admin
         public int Authenticate (string email, string password)
         {
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
-            string sql = String.Format("SELECT AdminID from Admin WHERE email='0' and pwd='1'", email, password);
+            string sql = String.Format("SELECT ID from dbo.Admin WHERE email='{0}' and pwd='{1}'", email, password);
             SqlCommand cmd = new(sql, con);
-            int id = 0;
 
             try
             {
@@ -26,7 +27,7 @@ namespace PTSLibrary.DataAccess
                 SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.SingleRow);
                 if (dr.Read())
                 {
-                    id = (int)dr["AdminID"];
+                    id = (int)dr["ID"];
                 } else {
                     Console.WriteLine("Incorrect email or password!");
                         }
