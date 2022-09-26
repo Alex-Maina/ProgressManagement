@@ -16,17 +16,17 @@ namespace PTSLibrary.Models
         /// <summary>
         /// Represents the project code
         /// </summary>
-        public string ProjectCode { get; set; } = String.Empty;
+        public string? ProjectCode { get; set; }
 
         /// <summary>
         /// Represents the Project Name
         /// </summary>
-        public string ProjectName { get; set; } = string.Empty;
+        public string? ProjectName { get; set; }
 
         /// <summary>
         /// Represents the Project Description
         /// </summary>
-        public string ProjectDescription { get; set; } = string.Empty;
+        public string ProjectDescription { get; set; }
 
         /// <summary>
         /// Represents the Project Tasks
@@ -36,7 +36,7 @@ namespace PTSLibrary.Models
         /// <summary>
         /// Represents the project difficulty level (Beginner, Intermidiate, Expert)
         /// </summary>
-        public string Level { get; set; } = string.Empty;
+        public string Level { get; set; } 
 
         /// <summary>
         /// Represents the Project Duration in weeks
@@ -73,6 +73,8 @@ namespace PTSLibrary.Models
         {
             ProjectCode = projectCode;
             ProjectName = projectName;
-            }
+        }
+
+        public string DisplayProject { get { return ProjectCode + "   -   " + ProjectName; } }
     }
 }

@@ -42,11 +42,7 @@ namespace PTSLibrary.Facades
         {
             return (dao.GetListOfUsers()).ToArray();
         }
-        //Project list
-        public ProjectModel[] GetListOfProjects()
-        {
-            return (dao.GetListOfProjects()).ToArray();
-        }
+        
         //Cohort list
         public CohortModel[] GetListOfCohorts()
         {

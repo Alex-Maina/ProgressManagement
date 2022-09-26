@@ -52,7 +52,7 @@ namespace PTSLibrary.DataAccess
             SqlDataReader dr;
             List<ProjectModel> projects;
             projects = new List<ProjectModel>();
-            sql = "SELECT * FROM project";
+            sql = "SELECT * FROM dbo.Projects";
             cmd = new SqlCommand(sql, con);
             try
             {
