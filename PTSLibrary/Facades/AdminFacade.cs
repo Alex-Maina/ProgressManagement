@@ -24,13 +24,28 @@ namespace PTSLibrary.Facades
             }
             return dao.Authenticate(email, password);
         }
-        public void CreateProject(string projectName, string projectDescription, string projectTasks, string level, int projectDuration, string github, string link)
+        //Create project
+        public void CreateProject(string projectName, string projectDescription, string level, int projectDuration, string github, string link)
         {
-            if (projectName == null || projectDescription == "" || projectTasks == null || level == null || projectDuration == 0)
+            if (projectName == null || projectDescription == "" || level == null)
             {
-                throw new Exception("Missing Data");
+                throw new Exception("Please fill in all fields with * ");
             }
-            dao.CreateProject(projectName,projectDescription,projectTasks,level,projectDuration,github,link);
+            dao.CreateProject(projectName, projectDescription, level, projectDuration, github, link);
+        }
+        //Delete project
+        public void DeleteProject(int id)
+        {
+            dao.DeleteProject(id);
+        }
+        //Update project
+        public void UpdateProject(string projectName, string description, string level, int duration, string github, string link, int projectID)
+        {
+            if (projectName == null || description == "" || level == "" || duration == 0 || link == null)
+            {
+                throw new Exception("Please fill in all fields with * ");
+            }
+            dao.UpdateProject(projectName, description, level, duration, github, link, projectID);
         }
         //General Users
         public UserModel[] GetListOfUsers()
@@ -42,7 +57,6 @@ namespace PTSLibrary.Facades
         {
             return (dao.GetListOfUsers()).ToArray();
         }
-        
         //Cohort list
         public CohortModel[] GetListOfCohorts()
         {
@@ -69,7 +83,7 @@ namespace PTSLibrary.Facades
         //AssignProject
         public void AssignProject(DateTime startdate, int projectID, int cohortID, int teamleaderID, int adminID)
         {
-            if (startdate == null || projectID == null || cohortID == null || teamleaderID == null)
+            if (startdate == null || projectID == 0 || cohortID == 0 || teamleaderID == 0)
             {
                 throw new Exception("Missing Data");
             }

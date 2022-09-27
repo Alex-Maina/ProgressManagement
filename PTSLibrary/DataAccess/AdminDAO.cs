@@ -41,15 +41,15 @@ namespace PTSLibrary.DataAccess
 
             return id;
         }
-
         //Add project to database
-        public void CreateProject(string projectName, string projectDescription, string projectTasks, string level, int projectDuration, string github, string link)
+        public void CreateProject(string projectName, string projectDescription, 
+            string level, int projectDuration, string github, string link)
         {
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             SqlCommand cmd;
-            sql = "INSERT INTO Projects (ProjectName, ProjectDescription, ProjectTasks, Duration, Level, Github, VideoLink)";
-            sql += String.Format("VALUES ('{0}','{1}','{2}','{3}',{4},{5},{6},{7})", projectName, projectDescription, projectTasks, projectDuration, level, github, link);
+            sql = "INSERT INTO Projects (ProjectName, ProjectDescription, Duration, Level, GithubRepo, VideoLink, ProjectTasks)";
+            sql += String.Format("VALUES ('{0}','{1}','{2}','{3}','{4}','{5}',' ')", projectName, projectDescription, projectDuration, level, github, link);
             cmd = new SqlCommand(sql, con);
             try
             {
@@ -65,7 +65,52 @@ namespace PTSLibrary.DataAccess
                 con.Close();
             }
         }
-
+        //Delete a project 
+        public void DeleteProject(int id)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            sql = String.Format("DELETE FROM projects WHERE ProjectID='{0}'", id);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error deleting project", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        //Edit existing project 
+        public void UpdateProject(string projectName, string description,
+            string level, int duration, string github, string link, int projectID)
+        { 
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            sql = String.Format("UPDATE Projects SET ProjectName = '{0}', ProjectDescription ='{1}', Duration='{2}', Level='{3}', " +
+                "GithubRepo='{4}', VideoLink='{5}' WHERE ProjectID = '{6}'", projectName, description, duration, level, github, link, projectID);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error updating project", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
         //Create Cohort
         public void CreateCohort(DateTime startDate)
         {
@@ -207,7 +252,7 @@ namespace PTSLibrary.DataAccess
             }
             catch (SqlException ex)
             {
-                throw new Exception("Error Inserting", ex);
+                throw new Exception("Error inserting task", ex);
             }
             finally
             {
