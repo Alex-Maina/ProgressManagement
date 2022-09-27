@@ -12,7 +12,7 @@ using PTSLibrary.Models;
 
 namespace AdminUI
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : System.Windows.Forms.Form
     {
         private AdminFacade facade;
         private int Id;
