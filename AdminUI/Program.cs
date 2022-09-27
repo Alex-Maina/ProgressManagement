@@ -21,7 +21,7 @@ namespace AdminUI
 
         static void FormClosed(object sender, FormClosedEventArgs e)
         {
-            ((Form)sender).FormClosed -= FormClosed;
+            ((System.Windows.Forms.Form)sender).FormClosed -= FormClosed;
             if (Application.OpenForms.Count == 0) Application.ExitThread();
             else Application.OpenForms[0].FormClosed += FormClosed;
         }
