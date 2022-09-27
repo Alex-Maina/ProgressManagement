@@ -53,10 +53,30 @@ namespace PTSLibrary.Models
         /// </summary>
         public string Link { get; set; } = string.Empty;
 
+        /// <summary>
+        /// Combination of the Project Code and Name.
+        /// </summary>
+        public string DisplayProject { get { return ProjectCode + "   -   " + ProjectName; } }
+
         public ProjectModel()
         {
 
         }
+
+        public ProjectModel(int projectID, string projectCode, string projectName, string projectDescription, 
+            string projectTasks, string level, int projectDuration, string github, string link)
+        {
+            ProjectID = projectID;
+            ProjectCode = projectCode;
+            ProjectName = projectName;
+            ProjectDescription = projectDescription;
+            ProjectTasks = projectTasks;
+            Level = level;
+            ProjectDuration = projectDuration;
+            Github = github;
+            Link = link;
+        }
+
 
         public ProjectModel(string projectName, string projectDescription, string projectTasks, string level, int projectDuration, string github, string link)
         {
@@ -75,6 +95,5 @@ namespace PTSLibrary.Models
             ProjectName = projectName;
         }
 
-        public string DisplayProject { get { return ProjectCode + "   -   " + ProjectName; } }
     }
 }
