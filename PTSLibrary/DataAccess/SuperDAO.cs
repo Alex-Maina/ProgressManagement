@@ -60,7 +60,9 @@ namespace PTSLibrary.DataAccess
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    ProjectModel p = new(dr["ProjectCode"].ToString(), dr["ProjectName"].ToString());
+                    ProjectModel p = new((int)dr["ProjectID"], dr["ProjectCode"].ToString(), dr["ProjectName"].ToString(),
+                        dr["ProjectDescription"].ToString(), dr["ProjectTasks"].ToString(), dr["Level"].ToString(),
+                        (int)dr["Duration"], dr["GithubRepo"].ToString(), dr["VideoLink"].ToString());
                     projects.Add(p);
                 }
                 dr.Close();
