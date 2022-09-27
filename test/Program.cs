@@ -36,6 +36,16 @@ internal class Program
 
         Console.WriteLine("DB Insert was successful!");
 
+      
         Console.Read();
     }
+
+    private void DisplayProjects()
+    {
+        projects = facade.GetListOfProjects();
+        projectsListBox.DataSource = projects;
+        projectsListBox.DisplayMember = "ProjectName";
+        projectsListBox.ValueMember = "ProjectCode";
+    }
+
 }
