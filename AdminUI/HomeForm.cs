@@ -126,5 +126,13 @@ namespace AdminUI
         {
             
         }
+
+        private void editCohortBtn_Click(object sender, EventArgs e)
+        {
+            selectedCohort = cohorts[cohortListBox.SelectedIndex];
+            editCohortForm delete = new();
+            delete.Show();
+            Close();
+        }
     }
 }

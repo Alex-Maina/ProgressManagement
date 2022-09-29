@@ -320,6 +320,7 @@
             this.editCohortBtn.TabIndex = 1;
             this.editCohortBtn.Text = "Edit ";
             this.editCohortBtn.UseVisualStyleBackColor = true;
+            this.editCohortBtn.Click += new System.EventHandler(this.editCohortBtn_Click);
             // 
             // cohortListBox
             // 
