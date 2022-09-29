@@ -19,7 +19,8 @@ namespace AdminUI
 
         private UserModel[] users;
         public static ProjectModel[] projects;
-        private CohortModel[] cohort;
+        private CohortModel[] cohorts;
+        public static CohortModel selectedCohort;
         public static ProjectModel selectedProject;
         private TaskModel[] tasks;
 
@@ -31,6 +32,7 @@ namespace AdminUI
             facade = new AdminFacade();
             Id = 0;
             DisplayProjects();
+            DisplayCohorts();
         }
 
         private void projectsTabPage_Click(object sender, EventArgs e)
@@ -88,6 +90,41 @@ namespace AdminUI
             selectedProject = projects[projectsListBox.SelectedIndex];
             projectForm ob = new();
             ob.Show();
+        }
+
+        private void editAssignedBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addCohortBtn_Click(object sender, EventArgs e)
+        {
+            addCohortForm add = new();
+            add.Show();
+            Close();
+        }
+
+        private void cohortListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        //Display list of cohorts
+        public void DisplayCohorts()
+        {
+            cohorts = facade.GetListOfCohorts();
+            cohortListBox.DataSource = cohorts;
+            cohortListBox.DisplayMember = "DisplayCohort";  
+            cohortListBox.ValueMember = "CohortID";
+        }
+        public void CohortDetails()
+        {
+            cohortName.Text = selectedCohort.CohortName;
+            startDate.Text = selectedCohort.StartDate;
+        }
+
+        private void HomeForm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
