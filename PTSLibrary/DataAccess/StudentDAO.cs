@@ -58,7 +58,8 @@ namespace PTSLibrary.DataAccess
                 dr = cmd.ExecuteReader(CommandBehavior.SingleRow);
                 if (dr.Read())
                 {
-                    cohort = new((int)dr["CohortID"], dr["CohortName"].ToString(), dr["startDate"].ToString(), dr["Status"].ToString());
+                    DateTime startDate = DateTime.Parse(dr["StartDate"].ToString());
+                    cohort = new((int)dr["CohortID"], dr["CohortName"].ToString(), startDate, dr["Status"].ToString());
                 }
                 dr.Close();
             }

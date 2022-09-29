@@ -117,7 +117,7 @@ namespace PTSLibrary.DataAccess
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             SqlCommand cmd;
-            sql = "INSERT INTO Cohorts (StartDate)";
+            sql = "INSERT INTO Cohort (StartDate)";
             sql += String.Format("VALUES ('{0}')", startDate);
             cmd = new SqlCommand(sql, con);
             try
@@ -210,7 +210,7 @@ namespace PTSLibrary.DataAccess
             SqlDataReader dr;
             List<CohortModel> cohorts;
             cohorts = new List<CohortModel>();
-            sql = "SELECT * FROM Cohorts";
+            sql = "SELECT * FROM Cohort";
             cmd = new SqlCommand(sql, con);
             try
             {
@@ -218,7 +218,8 @@ namespace PTSLibrary.DataAccess
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    CohortModel t = new( dr["CohortName"].ToString(), dr["Status"].ToString());
+                    DateTime startDate = DateTime.Parse(dr["StartDate"].ToString());
+                    CohortModel t = new((int)dr["CohortID"],dr["CohortName"].ToString(), startDate, dr["Status"].ToString());
                     cohorts.Add(t);
                 }
                 dr.Close();
