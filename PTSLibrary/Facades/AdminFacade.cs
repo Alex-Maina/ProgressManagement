@@ -57,6 +57,11 @@ namespace PTSLibrary.Facades
         {
             return (dao.GetListOfUsers()).ToArray();
         }
+        //Create Cohort
+        public void CreateCohort(DateTime startDate)
+        {
+            dao.CreateCohort(startDate);
+        }
         //Cohort list
         public CohortModel[] GetListOfCohorts()
         {

@@ -38,6 +38,8 @@ namespace PTSLibrary.Models
         /// </summary>
         public List<UserModel> Members { get; set; } = new List<UserModel>();
 
+        public string DisplayCohort { get { return CohortName  +" -   Start Date: " + StartDate; } }
+
         public CohortModel()
         {
         }
@@ -48,11 +50,11 @@ namespace PTSLibrary.Models
             Status = status;
         }
 
-        public CohortModel(int cohortID, string cohortName, string startDate, string status)
+        public CohortModel(int cohortID, string cohortName, DateTime startDate, string status)
         {
             CohortID = cohortID;
             CohortName = cohortName;
-            StartDate = startDate;
+            StartDate = startDate.ToString("dd/MM/yyyy");
             Status = status;
         }
     }
