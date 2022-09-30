@@ -19,9 +19,17 @@ namespace AdminUI
 
         private UserModel[] users;
         public static ProjectModel[] projects;
+        public static ProjectModel selectedProject;
+
         private CohortModel[] cohorts;
         public static CohortModel selectedCohort;
-        public static ProjectModel selectedProject;
+        
+        public static AssignedProjectModel[] inprogressProjects;
+        public static AssignedProjectModel selectedInprogress;
+
+        public static AssignedProjectModel[] completedProjects; 
+        public static AssignedProjectModel selectedCompleted;
+
         private TaskModel[] tasks;
 
 
@@ -106,8 +114,17 @@ namespace AdminUI
 
         private void cohortListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            CohortDetails();
+            InprogressProjects();
+            CompleteProjects();
         }
+
+        private void cohortTabPage_Selected(object sender, TabControlEventArgs e)
+        {
+            
+        }
+
+
         //Display list of cohorts
         public void DisplayCohorts()
         {
@@ -116,11 +133,30 @@ namespace AdminUI
             cohortListBox.DisplayMember = "DisplayCohort";  
             cohortListBox.ValueMember = "CohortID";
         }
+        //Get cohort details
         public void CohortDetails()
         {
+            selectedCohort = cohorts[cohortListBox.SelectedIndex];
             cohortName.Text = selectedCohort.CohortName;
             startDate.Text = selectedCohort.StartDate;
         }
+        //Get list of complete projects/Cohort
+        public void InprogressProjects()
+        {
+            inprogressProjects = facade.GetListOfInprogressProjects(selectedCohort.CohortID);
+            inprogressList.DataSource = inprogressProjects;
+            inprogressList.DisplayMember = "Display";
+            inprogressList.ValueMember = "AssignedProjectID";
+        }
+        //Get list of complete projects/Cohort
+        public void CompleteProjects()
+        {
+            completedProjects = facade.GetListOfCompletedProjects(selectedCohort.CohortID);
+            completedList.DataSource = completedProjects;
+            completedList.DisplayMember = "Display";
+            completedList.ValueMember = "AssignedProjectID";
+        }
+
 
         private void HomeForm_Load(object sender, EventArgs e)
         {
@@ -133,6 +169,32 @@ namespace AdminUI
             editCohortForm delete = new();
             delete.Show();
             Close();
+        }
+
+        private void deleteCohortBtn_Click(object sender, EventArgs e)
+        {
+            selectedCohort = cohorts[cohortListBox.SelectedIndex];
+            deleteCohortForm delete = new();
+            delete.Show();
+            Close();
+        }
+
+        private void statusBtn_Click(object sender, EventArgs e)
+        {
+            selectedCohort = cohorts[cohortListBox.SelectedIndex];
+            graduateCohortForm delete = new();
+            delete.Show();
+            Close();
+        }
+
+        private void refreshBtn_Click(object sender, EventArgs e)
+        {
+            InprogressProjects();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
