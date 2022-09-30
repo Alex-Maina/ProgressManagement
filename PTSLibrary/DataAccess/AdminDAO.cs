@@ -134,6 +134,73 @@ namespace PTSLibrary.DataAccess
                 con.Close();
             }
         }
+        //Edit Cohort
+        public void editCohort(DateTime startDate, int id)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            sql = String.Format("UPDATE Cohort SET StartDate = '{0}' WHERE CohortID = '{1}'", startDate, id);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error updating cohort", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        //Graduate Cohort
+        public void graduateCohort(int id)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            DateTime endDate = DateTime.Now;
+            sql = String.Format("UPDATE Cohort SET Status = 'Complete', EndDate = '{0}'  WHERE CohortID = '{1}'", endDate, id);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error graduating cohort", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        //Delete a cohort 
+        public void DeleteCohort(int id)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            sql = String.Format("DELETE FROM Cohort WHERE CohortID='{0}'", id);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error deleting cohort", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
         //List the general users
         public List<UserModel> GetListOfUsers()
@@ -240,7 +307,6 @@ namespace PTSLibrary.DataAccess
         {
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             string sql;
-            SqlConnection cn;
             SqlCommand cmd;
             Guid taskId = Guid.NewGuid();
             sql = "INSERT INTO Tasks (TaskName, ProjectID)";
@@ -286,13 +352,13 @@ namespace PTSLibrary.DataAccess
         }
 
         //Assign Project
-        public void AsssignProject(DateTime startdate, int projectID, int cohortID, int teamleaderID, int adminID)
+        public void AsssignProject(DateTime startdate, int projectID, int cohortID, int teamleaderID)
         {
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             SqlCommand cmd;
-            sql = "INSERT INTO AssignedProjects (StartDate, ProjectID, CohortID, UserID, AdminID)";
-            sql += String.Format("VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')", startdate, projectID, cohortID, teamleaderID, adminID);
+            sql = "INSERT INTO AssignedProject (StartDate, ProjectID, CohortID, UserID, Status)";
+            sql += String.Format("VALUES ('{0}','{1}','{2}','{3}','{4}','Inprogress')", startdate, projectID, cohortID, teamleaderID);
             cmd = new SqlCommand(sql, con);
             try
             {
@@ -308,6 +374,53 @@ namespace PTSLibrary.DataAccess
                 con.Close();
             }
         }
+        //Edit assigned project
+        public void EditAssignedProject(DateTime startdate, int projectID, int cohortID, int teamleaderID,int assignedID)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            sql = "INSERT INTO AssignedProject (StartDate, ProjectID, CohortID, UserID, Status)";
+            sql = String.Format("UPDATE AssignedProject SET StartDate ='{0}', ProjectID ='{1}', CohortID ='{2}', UserID='{3}' " +
+                "WHERE AssignedID = '{4}'", startdate, projectID, cohortID, teamleaderID,assignedID);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error updating the assignment", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        //Delete assigned project 
+        public void DeleteAssignedProject(int id)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            sql = String.Format("DELETE FROM Assignedproject WHERE CohortID='{0}'", id);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error deleting assigned project", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
 
 
     }

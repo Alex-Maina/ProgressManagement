@@ -38,7 +38,7 @@ namespace PTSLibrary.Facades
         {
             dao.DeleteProject(id);
         }
-        //Update project
+        //Edit project
         public void UpdateProject(string projectName, string description, string level, int duration, string github, string link, int projectID)
         {
             if (projectName == null || description == "" || level == "" || duration == 0 || link == null)
@@ -61,6 +61,21 @@ namespace PTSLibrary.Facades
         public void CreateCohort(DateTime startDate)
         {
             dao.CreateCohort(startDate);
+        }
+        //Edit cohort
+        public void editCohort(DateTime startDate, int id)
+        {
+            dao.editCohort(startDate, id);
+        }
+        //Graduate cohort
+        public void graduateCohort(int id)
+        {
+            dao.graduateCohort(id);
+        }
+        //Delete cohort
+        public void DeleteCohort(int id)
+        {
+            dao.DeleteCohort(id);
         }
         //Cohort list
         public CohortModel[] GetListOfCohorts()
@@ -86,13 +101,27 @@ namespace PTSLibrary.Facades
             dao.CreateTeamleader(firstname,lastname,email,tempPwd);
         }
         //AssignProject
-        public void AssignProject(DateTime startdate, int projectID, int cohortID, int teamleaderID, int adminID)
+        public void AssignProject(DateTime startdate, int projectID, int cohortID, int teamleaderID)
         {
             if (startdate == null || projectID == 0 || cohortID == 0 || teamleaderID == 0)
             {
                 throw new Exception("Missing Data");
             }
-            dao.AsssignProject(startdate,projectID,cohortID,teamleaderID,adminID);
+            dao.AsssignProject(startdate, projectID, cohortID, teamleaderID);
+        }
+        //Edit assigned project
+        public void EditAssignedProject(DateTime startdate, int projectID, int cohortID, int teamleaderID, int assignedID)
+        {
+            if (startdate == null || projectID == 0 || cohortID == 0 || teamleaderID == 0)
+            {
+                throw new Exception("Missing Data");
+            }
+            dao.EditAssignedProject(startdate, projectID, cohortID, teamleaderID, assignedID);
+        }
+        //Delete assigned project
+        public void DeleteAssignedProject(int id)
+        {
+            dao.DeleteAssignedProject(id);
         }
     }
 }
