@@ -56,7 +56,7 @@ namespace PTSLibrary.Models
         /// <summary>
         /// Combination of the Project Code and Name.
         /// </summary>
-        public string DisplayProject { get { return ProjectCode + "   -   " + ProjectName; } }
+        public string DisplayProject { get { return ProjectCode + "   -   " + ProjectName + "   -   " + Level; } }
 
         public ProjectModel()
         {
