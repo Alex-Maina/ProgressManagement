@@ -25,5 +25,16 @@ namespace PTSLibrary.Facades
         {
             return (dao.GetListOfTasks(projectID).ToArray());
         }
+
+        //List of assigned projects that are complete/cohort
+        public AssignedProjectModel[] GetListOfCompletedProjects(int CohortID)
+        {
+            return (dao.GetListOfCompletedProjects(CohortID).ToArray());
+        }
+        //List of assigned projects that are inprogress/cohort
+        public AssignedProjectModel[] GetListOfInprogressProjects(int CohortID)
+        {
+            return (dao.GetListOfInprogressProjects(CohortID).ToArray());
+        }
     }
 }
