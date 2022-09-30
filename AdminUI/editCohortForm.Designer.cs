@@ -66,7 +66,7 @@
             this.startDate.Name = "startDate";
             this.startDate.Size = new System.Drawing.Size(185, 29);
             this.startDate.TabIndex = 8;
-            this.startDate.Value = new System.DateTime(2022, 9, 28, 13, 35, 32, 0);
+            this.startDate.Value = new System.DateTime(2022, 9, 30, 0, 0, 0, 0);
             // 
             // label2
             // 
