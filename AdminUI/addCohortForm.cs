@@ -40,5 +40,12 @@ namespace AdminUI
             home.Show();
             Close();
         }
+
+        private void addCohortForm_Load(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            startDate.MinDate = now;
+            startDate.Value = now;
+        }
     }
 }

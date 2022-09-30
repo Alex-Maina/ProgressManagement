@@ -102,6 +102,7 @@
             this.Name = "addCohortForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add New Cohort";
+            this.Load += new System.EventHandler(this.addCohortForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
