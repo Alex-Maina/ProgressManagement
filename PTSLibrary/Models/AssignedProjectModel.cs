@@ -16,7 +16,7 @@ namespace PTSLibrary.Models
         /// <summary>
         /// Represents the start date of the assigned project
         /// </summary>
-        public string StartDate { get; set; } = string.Empty;
+        public string StartDate { get; set; }
 
         /// <summary>
         /// Represents the project ID of the assigned project
@@ -36,6 +36,33 @@ namespace PTSLibrary.Models
         /// <summary>
         /// Represents the admin (ID) that assigned the project
         /// </summary>
-        public int AdminID { get; set; }
+        public string Status { get; set; }
+
+        public string ProjectCode { get; set; }
+        public string ProjectName { get; set; }
+        public string Level { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
+        public string Name { get { return Fname + " " + Lname; } }
+        public string Display { get { return ProjectName +"    "+Level+ "     Teamleader :  " + Name; } }
+
+
+        public AssignedProjectModel() { }
+
+        public AssignedProjectModel(int assignedProjectID, string startDate, int projectID, int cohortID, int userID, string status,
+            string projectCode, string projectName, string level, string fname, string lname)
+        {
+            AssignedProjectID = assignedProjectID;
+            StartDate = startDate;
+            ProjectID = projectID;
+            CohortID = cohortID;
+            UserID = userID;
+            Status = status;
+            ProjectCode = projectCode;
+            ProjectName = projectName;
+            Level = level;
+            Fname = fname;
+            Lname = lname;
+        }
     }
 }
