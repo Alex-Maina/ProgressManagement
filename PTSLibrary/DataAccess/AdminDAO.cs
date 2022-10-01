@@ -333,8 +333,8 @@ namespace PTSLibrary.DataAccess
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             SqlCommand cmd;
-            sql = "INSERT INTO Users (FirstName, LastName, Email, Pwd, Role)";
-            sql += String.Format("VALUES ('{0}','{1}','{2}',teamleader)", firstname,lastname, email,tempPwd);
+            sql = "INSERT INTO Users (FirstName, LastName, Phone, Email, Pwd, Role)";
+            sql += String.Format("VALUES ('{0}','{1}','{2}','{3}',teamleader)", firstname,lastname, email,tempPwd);
             cmd = new SqlCommand(sql, con);
             try
             {
