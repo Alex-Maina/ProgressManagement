@@ -17,7 +17,9 @@ namespace AdminUI
         private AdminFacade facade;
         private int Id;
 
-        private UserModel[] users;
+        private UserModel[] teamleaders;
+        public static UserModel selectedTeamleader;
+
         public static ProjectModel[] projects;
         public static ProjectModel selectedProject;
 
@@ -195,6 +197,15 @@ namespace AdminUI
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        //Display teamleaders
+        public void DisplayTeamleaders()
+        {
+            teamleaders = facade.GetListOfTeamLeaders();
+            teamleadersListBox.DataSource = teamleaders;
+            teamleadersListBox.DisplayMember = "Username";
+            teamleadersListBox.ValueMember = "ID";
         }
     }
 }
