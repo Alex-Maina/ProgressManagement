@@ -55,7 +55,7 @@ namespace PTSLibrary.Facades
         //Teamleaders
         public UserModel[] GetListOfTeamLeaders()
         {
-            return (dao.GetListOfUsers()).ToArray();
+            return (dao.GetListOfTeamLeaders()).ToArray();
         }
         //Create Cohort
         public void CreateCohort(DateTime startDate)
@@ -92,13 +92,13 @@ namespace PTSLibrary.Facades
             dao.CreateTask(task, projectID);
         }
         //Create Teamleader
-        public void CreateTeamleader(string firstname, string lastname, string email, string tempPwd)
+        public void CreateTeamleader(string firstname, string lastname, string phone, string email)
         {
-            if (firstname == null || firstname == "" || lastname == null || email == null || tempPwd == null)
+            if (firstname == null || lastname == "" || phone == null || email == null)
             {
                 throw new Exception("Missing Data");
             }
-            dao.CreateTeamleader(firstname,lastname,email,tempPwd);
+            dao.CreateTeamleader(firstname,lastname,phone,email);
         }
         //AssignProject
         public void AssignProject(DateTime startdate, int projectID, int cohortID, int teamleaderID)

@@ -211,7 +211,7 @@ namespace PTSLibrary.DataAccess
             SqlDataReader dr;
             List<UserModel> users;
             users = new List<UserModel>();
-            sql = "SELECT * FROM Users WHERE UserRole != teamleader";
+            sql = "SELECT * FROM Users WHERE UserRole ='student';";
             cmd = new SqlCommand(sql, con);
             try
             {
@@ -244,7 +244,7 @@ namespace PTSLibrary.DataAccess
             SqlDataReader dr;
             List<UserModel> users;
             users = new List<UserModel>();
-            sql = "SELECT * FROM Users WHERE UserRole = teamleader";
+            sql = "SELECT * FROM Users WHERE UserRole IN ('teamleader','both');";
             cmd = new SqlCommand(sql, con);
             try
             {
@@ -328,13 +328,13 @@ namespace PTSLibrary.DataAccess
         }
 
         //create a teamleader
-        public void CreateTeamleader(string firstname, string lastname, string email, string tempPwd)
+        public void CreateTeamleader(string firstname, string lastname, string phone, string email)
         {
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             SqlCommand cmd;
-            sql = "INSERT INTO Users (FirstName, LastName, Phone, Email, Pwd, Role)";
-            sql += String.Format("VALUES ('{0}','{1}','{2}','{3}',teamleader)", firstname,lastname, email,tempPwd);
+            sql = "INSERT INTO Users (FirstName, LastName, PhoneNumber, Email, Pwd, UserRole)";
+            sql += String.Format("VALUES ('{0}','{1}','{2}','{3}','{1}','teamleader')", firstname,lastname, phone, email);
             cmd = new SqlCommand(sql, con);
             try
             {
