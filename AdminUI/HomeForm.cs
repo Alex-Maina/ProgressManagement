@@ -43,6 +43,7 @@ namespace AdminUI
             Id = 0;
             DisplayProjects();
             DisplayCohorts();
+            DisplayTeamleaders();
         }
 
         private void projectsTabPage_Click(object sender, EventArgs e)
@@ -206,6 +207,24 @@ namespace AdminUI
             teamleadersListBox.DataSource = teamleaders;
             teamleadersListBox.DisplayMember = "Username";
             teamleadersListBox.ValueMember = "ID";
+        }
+        //Create new teamleader
+        private void createNewTLBtn_Click(object sender, EventArgs e)
+        {
+            createTeamleaderForm tl = new();
+            tl.Show();
+            Close();
+        }
+
+        private void addTLBtn_Click(object sender, EventArgs e)
+        {
+            addTeamleaderForm tl = new();
+            tl.Show();
+        }
+
+        private void refreshTL_Click(object sender, EventArgs e)
+        {
+            DisplayTeamleaders();
         }
     }
 }
