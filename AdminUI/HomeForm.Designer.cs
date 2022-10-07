@@ -48,6 +48,7 @@
             this.editCohortBtn = new System.Windows.Forms.Button();
             this.cohortListBox = new System.Windows.Forms.ListBox();
             this.projectsTabPage = new System.Windows.Forms.TabPage();
+            this.refreshTL = new System.Windows.Forms.Button();
             this.minTlBtn = new System.Windows.Forms.Button();
             this.deleteTLBtn = new System.Windows.Forms.Button();
             this.addTLBtn = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@
             this.allTlBtn = new System.Windows.Forms.Button();
             this.editBtn = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.refreshTL = new System.Windows.Forms.Button();
             this.cohortsTabPage.SuspendLayout();
             this.projectsTabPage.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -159,6 +159,7 @@
             this.assignProjectBtn.TabIndex = 7;
             this.assignProjectBtn.Text = "Assign Project";
             this.assignProjectBtn.UseVisualStyleBackColor = true;
+            this.assignProjectBtn.Click += new System.EventHandler(this.assignProjectBtn_Click);
             // 
             // addCohortBtn
             // 
@@ -312,6 +313,18 @@
             this.projectsTabPage.Text = "Projects  & Teamleaders    ";
             this.projectsTabPage.Click += new System.EventHandler(this.projectsTabPage_Click);
             // 
+            // refreshTL
+            // 
+            this.refreshTL.BackColor = System.Drawing.Color.White;
+            this.refreshTL.Font = new System.Drawing.Font("Montserrat", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.refreshTL.Location = new System.Drawing.Point(777, 24);
+            this.refreshTL.Name = "refreshTL";
+            this.refreshTL.Size = new System.Drawing.Size(100, 34);
+            this.refreshTL.TabIndex = 10;
+            this.refreshTL.Text = "Refresh List";
+            this.refreshTL.UseVisualStyleBackColor = false;
+            this.refreshTL.Click += new System.EventHandler(this.refreshTL_Click);
+            // 
             // minTlBtn
             // 
             this.minTlBtn.Font = new System.Drawing.Font("Montserrat SemiBold", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -331,6 +344,7 @@
             this.deleteTLBtn.TabIndex = 9;
             this.deleteTLBtn.Text = "Delete Teamleader";
             this.deleteTLBtn.UseVisualStyleBackColor = true;
+            this.deleteTLBtn.Click += new System.EventHandler(this.deleteTLBtn_Click);
             // 
             // addTLBtn
             // 
@@ -500,18 +514,6 @@
             this.tabControl.Size = new System.Drawing.Size(1042, 624);
             this.tabControl.TabIndex = 1;
             this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.cohortTabPage_Selected);
-            // 
-            // refreshTL
-            // 
-            this.refreshTL.BackColor = System.Drawing.Color.White;
-            this.refreshTL.Font = new System.Drawing.Font("Montserrat", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.refreshTL.Location = new System.Drawing.Point(777, 24);
-            this.refreshTL.Name = "refreshTL";
-            this.refreshTL.Size = new System.Drawing.Size(100, 34);
-            this.refreshTL.TabIndex = 10;
-            this.refreshTL.Text = "Refresh List";
-            this.refreshTL.UseVisualStyleBackColor = false;
-            this.refreshTL.Click += new System.EventHandler(this.refreshTL_Click);
             // 
             // HomeForm
             // 

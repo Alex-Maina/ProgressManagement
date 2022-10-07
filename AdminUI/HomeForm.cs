@@ -105,7 +105,9 @@ namespace AdminUI
 
         private void editAssignedBtn_Click(object sender, EventArgs e)
         {
-
+            selectedInprogress = inprogressProjects[inprogressList.SelectedIndex];
+            viewAssignedForm ob = new();
+            ob.Show();
         }
 
         private void addCohortBtn_Click(object sender, EventArgs e)
@@ -220,11 +222,27 @@ namespace AdminUI
         {
             addTeamleaderForm tl = new();
             tl.Show();
+            Close();
         }
 
         private void refreshTL_Click(object sender, EventArgs e)
         {
             DisplayTeamleaders();
+        }
+        
+        private void deleteTLBtn_Click(object sender, EventArgs e)
+        {
+            selectedTeamleader = teamleaders[teamleadersListBox.SelectedIndex];
+            deleteTeamleaderForm tl = new();
+            tl.Show();
+            Close();
+        }
+
+        private void assignProjectBtn_Click(object sender, EventArgs e)
+        {
+            selectedCohort = cohorts[cohortListBox.SelectedIndex];
+            assignProjectForm assign = new();
+            assign.Show();
         }
     }
 }
