@@ -100,10 +100,20 @@ namespace PTSLibrary.Facades
             }
             dao.CreateTeamleader(firstname,lastname,phone,email);
         }
+        //Add teamleader from users
+        public void elevateUserRole(int id)
+        {
+            dao.elevateUserRole(id);
+        }
+        //delete teamleader
+        public void demoteUserRole(int id)
+        {
+            dao.demoteUserRole(id);
+        }
         //AssignProject
         public void AssignProject(DateTime startdate, int projectID, int cohortID, int teamleaderID)
         {
-            if (startdate == null || projectID == 0 || cohortID == 0 || teamleaderID == 0)
+            if (projectID == 0 || cohortID == 0 || teamleaderID == 0)
             {
                 throw new Exception("Missing Data");
             }

@@ -350,6 +350,52 @@ namespace PTSLibrary.DataAccess
                 con.Close();
             }
         }
+        //Add teamleader from users
+        public void elevateUserRole(int id)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            sql = String.Format("UPDATE Users SET UserRole ='both'" +
+                "WHERE ID = '{0}'", id);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error updating the assignment", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        //Demote User Role
+        public void demoteUserRole(int id)
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            sql = String.Format("UPDATE Users SET UserRole ='student'" +
+                "WHERE ID = '{0}'", id);
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error updating the assignment", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
         //Assign Project
         public void AsssignProject(DateTime startdate, int projectID, int cohortID, int teamleaderID)
@@ -358,7 +404,7 @@ namespace PTSLibrary.DataAccess
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             SqlCommand cmd;
             sql = "INSERT INTO AssignedProject (StartDate, ProjectID, CohortID, UserID, Status)";
-            sql += String.Format("VALUES ('{0}','{1}','{2}','{3}','{4}','Inprogress')", startdate, projectID, cohortID, teamleaderID);
+            sql += String.Format("VALUES ('{0}',{1},{2},{3},'Inprogress')", startdate, projectID, cohortID, teamleaderID);
             cmd = new SqlCommand(sql, con);
             try
             {
@@ -380,7 +426,6 @@ namespace PTSLibrary.DataAccess
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             SqlCommand cmd;
-            sql = "INSERT INTO AssignedProject (StartDate, ProjectID, CohortID, UserID, Status)";
             sql = String.Format("UPDATE AssignedProject SET StartDate ='{0}', ProjectID ='{1}', CohortID ='{2}', UserID='{3}' " +
                 "WHERE AssignedID = '{4}'", startdate, projectID, cohortID, teamleaderID,assignedID);
             cmd = new SqlCommand(sql, con);
