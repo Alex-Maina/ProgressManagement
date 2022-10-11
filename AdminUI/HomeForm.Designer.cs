@@ -1,4 +1,6 @@
-﻿namespace AdminUI
+﻿using System.Windows.Forms;
+
+namespace AdminUI
 {
     partial class HomeForm
     {
@@ -138,6 +140,7 @@
             this.deleteAssignedBtn.TabIndex = 7;
             this.deleteAssignedBtn.Text = "Delete Project";
             this.deleteAssignedBtn.UseVisualStyleBackColor = true;
+            this.deleteAssignedBtn.Click += new System.EventHandler(this.deleteAssignedBtn_Click);
             // 
             // editAssignedBtn
             // 

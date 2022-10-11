@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace AdminUI
 {
-    public partial class HomeForm : System.Windows.Forms.Form
+    public partial class HomeForm : Form
     {
         private AdminFacade facade;
         private int Id;
@@ -103,12 +103,6 @@ namespace AdminUI
             ob.Show();
         }
 
-        private void editAssignedBtn_Click(object sender, EventArgs e)
-        {
-            selectedInprogress = inprogressProjects[inprogressList.SelectedIndex];
-            viewAssignedForm ob = new();
-            ob.Show();
-        }
 
         private void addCohortBtn_Click(object sender, EventArgs e)
         {
@@ -243,6 +237,18 @@ namespace AdminUI
             selectedCohort = cohorts[cohortListBox.SelectedIndex];
             assignProjectForm assign = new();
             assign.Show();
+        }
+        private void editAssignedBtn_Click(object sender, EventArgs e)
+        {
+            selectedInprogress = inprogressProjects[inprogressList.SelectedIndex];
+            viewAssignedForm ob = new();
+            ob.Show();
+        }
+        private void deleteAssignedBtn_Click(object sender, EventArgs e)
+        {
+            selectedInprogress = inprogressProjects[inprogressList.SelectedIndex];
+            deleteAssignedProjectForm ob = new();
+            ob.Show();
         }
     }
 }
