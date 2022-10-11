@@ -49,11 +49,11 @@ namespace PTSLibrary.Models
 
         public AssignedProjectModel() { }
 
-        public AssignedProjectModel(int assignedProjectID, string startDate, int projectID, int cohortID, int userID, string status,
+        public AssignedProjectModel(int assignedProjectID, DateTime startDate, int projectID, int cohortID, int userID, string status,
             string projectCode, string projectName, string level, string fname, string lname)
         {
             AssignedProjectID = assignedProjectID;
-            StartDate = startDate;
+            StartDate = startDate.ToString("dd/MM/yyyy");
             ProjectID = projectID;
             CohortID = cohortID;
             UserID = userID;

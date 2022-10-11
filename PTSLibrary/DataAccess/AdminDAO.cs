@@ -449,7 +449,7 @@ namespace PTSLibrary.DataAccess
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
             SqlCommand cmd;
-            sql = String.Format("DELETE FROM Assignedproject WHERE CohortID='{0}'", id);
+            sql = String.Format("DELETE FROM Assignedproject WHERE AssignedID='{0}'", id);
             cmd = new SqlCommand(sql, con);
             try
             {

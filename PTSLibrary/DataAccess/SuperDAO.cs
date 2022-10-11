@@ -132,7 +132,8 @@ namespace PTSLibrary.DataAccess
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    AssignedProjectModel p = new((int)dr["AssignedID"], dr["StartDate"].ToString(), (int)dr["ProjectID"],
+                    DateTime startDate = DateTime.Parse(dr["StartDate"].ToString());
+                    AssignedProjectModel p = new((int)dr["AssignedID"], startDate, (int)dr["ProjectID"],
                         (int)dr["ProjectID"], (int)dr["UserID"],dr["Status"].ToString(), dr["ProjectCode"].ToString(),
                         dr["ProjectName"].ToString(), dr["Level"].ToString(), dr["FirstName"].ToString(), dr["LastName"].ToString());
                     completeProjects.Add(p);
@@ -168,7 +169,8 @@ namespace PTSLibrary.DataAccess
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    AssignedProjectModel p = new((int)dr["AssignedID"], dr["StartDate"].ToString(), (int)dr["ProjectID"],
+                    DateTime startDate = DateTime.Parse(dr["StartDate"].ToString());
+                    AssignedProjectModel p = new((int)dr["AssignedID"], startDate, (int)dr["ProjectID"],
                         (int)dr["ProjectID"], (int)dr["UserID"], dr["Status"].ToString(), dr["ProjectCode"].ToString(),
                         dr["ProjectName"].ToString(), dr["Level"].ToString(), dr["FirstName"].ToString(), dr["LastName"].ToString());
                     inprogressProjects.Add(p);
