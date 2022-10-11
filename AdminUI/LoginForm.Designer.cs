@@ -1,4 +1,6 @@
-﻿namespace AdminUI
+﻿using System.Windows.Forms;
+
+namespace AdminUI
 {
     partial class LoginForm
     {
