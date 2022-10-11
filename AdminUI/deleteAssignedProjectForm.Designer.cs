@@ -28,35 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.unassignBtn = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.projectLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // cancelBtn
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button1.Font = new System.Drawing.Font("Montserrat Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(95, 167);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 42);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "No, abort";
-            this.button1.UseVisualStyleBackColor = false;
+            this.cancelBtn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.cancelBtn.Font = new System.Drawing.Font("Montserrat Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cancelBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cancelBtn.Location = new System.Drawing.Point(55, 124);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(165, 42);
+            this.cancelBtn.TabIndex = 7;
+            this.cancelBtn.Text = "No, abort";
+            this.cancelBtn.UseVisualStyleBackColor = false;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // deleteBtn
+            // unassignBtn
             // 
-            this.deleteBtn.BackColor = System.Drawing.Color.IndianRed;
-            this.deleteBtn.Font = new System.Drawing.Font("Montserrat Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.deleteBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.deleteBtn.Location = new System.Drawing.Point(286, 167);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(165, 42);
-            this.deleteBtn.TabIndex = 6;
-            this.deleteBtn.Text = "Yes, delete";
-            this.deleteBtn.UseVisualStyleBackColor = false;
+            this.unassignBtn.BackColor = System.Drawing.Color.IndianRed;
+            this.unassignBtn.Font = new System.Drawing.Font("Montserrat Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.unassignBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.unassignBtn.Location = new System.Drawing.Point(244, 124);
+            this.unassignBtn.Name = "unassignBtn";
+            this.unassignBtn.Size = new System.Drawing.Size(165, 42);
+            this.unassignBtn.TabIndex = 6;
+            this.unassignBtn.Text = "Yes, Unassign";
+            this.unassignBtn.UseVisualStyleBackColor = false;
+            this.unassignBtn.Click += new System.EventHandler(this.unassignBtn_Click);
             // 
             // nameLabel
             // 
@@ -66,27 +68,30 @@
             this.nameLabel.Size = new System.Drawing.Size(0, 25);
             this.nameLabel.TabIndex = 5;
             // 
-            // label1
+            // projectLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(136, 59);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(265, 25);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Are you sure you want to delete";
+            this.projectLabel.AutoSize = true;
+            this.projectLabel.Location = new System.Drawing.Point(55, 45);
+            this.projectLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.projectLabel.Name = "projectLabel";
+            this.projectLabel.Size = new System.Drawing.Size(265, 25);
+            this.projectLabel.TabIndex = 4;
+            this.projectLabel.Text = "Are you sure you want to delete";
             // 
             // deleteAssignedProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 284);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.deleteBtn);
+            this.ClientSize = new System.Drawing.Size(503, 228);
+            this.ControlBox = false;
+            this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.unassignBtn);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.projectLabel);
             this.Name = "deleteAssignedProjectForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "deleteAssignedProjectForm";
+            this.Load += new System.EventHandler(this.deleteAssignedProjectForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,9 +99,9 @@
 
         #endregion
 
-        private Button button1;
-        private Button deleteBtn;
+        private Button cancelBtn;
+        private Button unassignBtn;
         private Label nameLabel;
-        private Label label1;
+        private Label projectLabel;
     }
 }
