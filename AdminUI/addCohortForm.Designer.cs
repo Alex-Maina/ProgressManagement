@@ -60,7 +60,7 @@
             this.startDate.Font = new System.Drawing.Font("Montserrat", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.startDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startDate.Location = new System.Drawing.Point(189, 122);
-            this.startDate.MinDate = new System.DateTime(2022, 9, 28, 0, 0, 0, 0);
+            this.startDate.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             this.startDate.Name = "startDate";
             this.startDate.Size = new System.Drawing.Size(185, 29);
             this.startDate.TabIndex = 3;

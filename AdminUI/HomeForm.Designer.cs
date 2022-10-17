@@ -63,11 +63,9 @@ namespace AdminUI
             this.deleteBtn = new System.Windows.Forms.Button();
             this.viewBtn = new System.Windows.Forms.Button();
             this.projectsListBox = new System.Windows.Forms.ListBox();
-            this.maxTlBtn = new System.Windows.Forms.Button();
-            this.midTlBtn = new System.Windows.Forms.Button();
-            this.allTlBtn = new System.Windows.Forms.Button();
             this.editBtn = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.selectAll = new System.Windows.Forms.Button();
             this.cohortsTabPage.SuspendLayout();
             this.projectsTabPage.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -291,6 +289,7 @@ namespace AdminUI
             // projectsTabPage
             // 
             this.projectsTabPage.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.projectsTabPage.Controls.Add(this.selectAll);
             this.projectsTabPage.Controls.Add(this.refreshTL);
             this.projectsTabPage.Controls.Add(this.minTlBtn);
             this.projectsTabPage.Controls.Add(this.deleteTLBtn);
@@ -304,9 +303,6 @@ namespace AdminUI
             this.projectsTabPage.Controls.Add(this.deleteBtn);
             this.projectsTabPage.Controls.Add(this.viewBtn);
             this.projectsTabPage.Controls.Add(this.projectsListBox);
-            this.projectsTabPage.Controls.Add(this.maxTlBtn);
-            this.projectsTabPage.Controls.Add(this.midTlBtn);
-            this.projectsTabPage.Controls.Add(this.allTlBtn);
             this.projectsTabPage.Controls.Add(this.editBtn);
             this.projectsTabPage.Location = new System.Drawing.Point(4, 34);
             this.projectsTabPage.Name = "projectsTabPage";
@@ -333,10 +329,11 @@ namespace AdminUI
             this.minTlBtn.Font = new System.Drawing.Font("Montserrat SemiBold", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.minTlBtn.Location = new System.Drawing.Point(611, 522);
             this.minTlBtn.Name = "minTlBtn";
-            this.minTlBtn.Size = new System.Drawing.Size(69, 37);
+            this.minTlBtn.Size = new System.Drawing.Size(126, 37);
             this.minTlBtn.TabIndex = 9;
             this.minTlBtn.Text = "None";
             this.minTlBtn.UseVisualStyleBackColor = true;
+            this.minTlBtn.Click += new System.EventHandler(this.minTlBtn_Click);
             // 
             // deleteTLBtn
             // 
@@ -378,9 +375,9 @@ namespace AdminUI
             this.label7.Font = new System.Drawing.Font("Montserrat", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(611, 494);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(402, 22);
+            this.label7.Size = new System.Drawing.Size(376, 22);
             this.label7.TabIndex = 7;
-            this.label7.Text = "Filter teamleaders based on current assignments";
+            this.label7.Text = "Filter teamleaders based on assigned projects";
             // 
             // teamleadersListBox
             // 
@@ -460,39 +457,6 @@ namespace AdminUI
             this.projectsListBox.TabIndex = 1;
             this.projectsListBox.SelectedIndexChanged += new System.EventHandler(this.projectsListBox_SelectedIndexChanged);
             // 
-            // maxTlBtn
-            // 
-            this.maxTlBtn.Font = new System.Drawing.Font("Montserrat SemiBold", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maxTlBtn.Location = new System.Drawing.Point(761, 522);
-            this.maxTlBtn.Name = "maxTlBtn";
-            this.maxTlBtn.Size = new System.Drawing.Size(69, 37);
-            this.maxTlBtn.TabIndex = 0;
-            this.maxTlBtn.Text = "4 - 5";
-            this.maxTlBtn.UseVisualStyleBackColor = true;
-            this.maxTlBtn.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // midTlBtn
-            // 
-            this.midTlBtn.Font = new System.Drawing.Font("Montserrat SemiBold", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.midTlBtn.Location = new System.Drawing.Point(686, 522);
-            this.midTlBtn.Name = "midTlBtn";
-            this.midTlBtn.Size = new System.Drawing.Size(69, 37);
-            this.midTlBtn.TabIndex = 0;
-            this.midTlBtn.Text = "1 - 3";
-            this.midTlBtn.UseVisualStyleBackColor = true;
-            this.midTlBtn.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // allTlBtn
-            // 
-            this.allTlBtn.Font = new System.Drawing.Font("Montserrat SemiBold", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.allTlBtn.Location = new System.Drawing.Point(836, 522);
-            this.allTlBtn.Name = "allTlBtn";
-            this.allTlBtn.Size = new System.Drawing.Size(85, 37);
-            this.allTlBtn.TabIndex = 0;
-            this.allTlBtn.Text = "Select All";
-            this.allTlBtn.UseVisualStyleBackColor = true;
-            this.allTlBtn.Click += new System.EventHandler(this.button1_Click);
-            // 
             // editBtn
             // 
             this.editBtn.Font = new System.Drawing.Font("Montserrat SemiBold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -517,6 +481,17 @@ namespace AdminUI
             this.tabControl.Size = new System.Drawing.Size(1042, 624);
             this.tabControl.TabIndex = 1;
             this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.cohortTabPage_Selected);
+            // 
+            // selectAll
+            // 
+            this.selectAll.Font = new System.Drawing.Font("Montserrat SemiBold", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.selectAll.Location = new System.Drawing.Point(753, 519);
+            this.selectAll.Name = "selectAll";
+            this.selectAll.Size = new System.Drawing.Size(124, 37);
+            this.selectAll.TabIndex = 11;
+            this.selectAll.Text = "Select All";
+            this.selectAll.UseVisualStyleBackColor = true;
+            this.selectAll.Click += new System.EventHandler(this.selectAll_Click);
             // 
             // HomeForm
             // 
@@ -572,9 +547,6 @@ namespace AdminUI
         private Button deleteBtn;
         private Button viewBtn;
         private ListBox projectsListBox;
-        private Button maxTlBtn;
-        private Button midTlBtn;
-        private Button allTlBtn;
         private Button editBtn;
         private TabControl tabControl;
         private Button createNewTLBtn;
@@ -582,5 +554,6 @@ namespace AdminUI
         private Button deleteTLBtn;
         private Button addTLBtn;
         private Button refreshTL;
+        private Button selectAll;
     }
 }

@@ -250,5 +250,23 @@ namespace AdminUI
             deleteAssignedProjectForm ob = new();
             ob.Show();
         }
+
+        private void minTlBtn_Click(object sender, EventArgs e)
+        {
+            DisplayTeamleaders_0();
+        }
+        //Display teamleaders with no assignment
+        private void DisplayTeamleaders_0()
+        {
+            teamleaders = facade.GetListOfTeamLeaders_0();
+            teamleadersListBox.DataSource = teamleaders;
+            teamleadersListBox.DisplayMember = "Username";
+            teamleadersListBox.ValueMember = "ID";
+        }
+
+        private void selectAll_Click(object sender, EventArgs e)
+        {
+            DisplayTeamleaders();
+        }
     }
 }
