@@ -57,6 +57,11 @@ namespace PTSLibrary.Facades
         {
             return (dao.GetListOfTeamLeaders()).ToArray();
         }
+        //Teamleaders withou Assignment
+        public UserModel[] GetListOfTeamLeaders_0()
+        {
+            return (dao.GetListOfTeamLeaders_0()).ToArray();
+        }
         //Create Cohort
         public void CreateCohort(DateTime startDate)
         {

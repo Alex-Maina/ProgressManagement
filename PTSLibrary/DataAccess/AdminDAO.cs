@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -268,6 +269,39 @@ namespace PTSLibrary.DataAccess
             return users;
         }
 
+        //Teamleaders without any assignment
+        public List<UserModel> GetListOfTeamLeaders_0()
+        {
+            string sql;
+            SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
+            SqlCommand cmd;
+            SqlDataReader dr;
+            List<UserModel> users;
+            users = new List<UserModel>();
+            sql = "SELECT U.* FROM Users U WHERE UserRole IN('teamleader', 'both') AND U.id NOT IN(SELECT A.UserID FROM AssignedProject A);";
+            cmd = new SqlCommand(sql, con);
+            try
+            {
+                con.Open();
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    UserModel c = new(dr["FirstName"].ToString(), dr["LastName"].ToString(), (int)dr["ID"]);
+                    users.Add(c);
+                }
+                dr.Close();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error Getting list", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return users;
+        }
+
         //List of cohorts
         public List<CohortModel> GetListOfCohorts()
         {
@@ -443,8 +477,9 @@ namespace PTSLibrary.DataAccess
                 con.Close();
             }
         }
-        //Delete assigned project 
-        public void DeleteAssignedProject(int id)
+
+//Delete assigned project 
+public void DeleteAssignedProject(int id)
         {
             string sql;
             SqlConnection con = new(Properties.Settings.Default.PTSConnectionstring);
@@ -465,16 +500,6 @@ namespace PTSLibrary.DataAccess
                 con.Close();
             }
         }
-
-
-
     }
-
-    
-
-
-
-
-
 
 }
